@@ -11,7 +11,10 @@ class Account {
     )
 
     fun debtTransaction(intent: TransactionIntent) {
-        // Identificar se o tipo de MMC encaixa com algum Saldo
+        val selectedBalance = balances
+            .firstOrNull { it.isMmcUsable(intent.mmc) && it.hasSufficientBalance(intent.price) }
+            ?: throw InsufficientBalanceException()
+
         // Debtar saldo
         // Criar transação
         // Retorna transação

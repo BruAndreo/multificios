@@ -13,4 +13,6 @@ abstract class Balance(private val value: Double) {
     abstract val mmcAccepteds: List<String>
 
     open fun isMmcUsable(mmc: String) = mmcAccepteds.contains(mmc)
+
+    fun hasSufficientBalance(price: Double) = value >= price
 }
