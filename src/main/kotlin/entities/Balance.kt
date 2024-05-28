@@ -1,12 +1,12 @@
 package org.example.entities
 
-abstract class Balance(private var value: Double) {
+abstract class Balance(val type: BalanceTypes, private var value: Double) {
 
     companion object {
         fun create(type: BalanceTypes, value: Double) = when (type) {
-            BalanceTypes.MEAL -> MealBalance(value)
-            BalanceTypes.GENERAL -> GeneralBalance(value)
-            BalanceTypes.CULTURE -> CultureBalance(value)
+            BalanceTypes.MEAL -> MealBalance(type, value)
+            BalanceTypes.GENERAL -> GeneralBalance(type, value)
+            BalanceTypes.CULTURE -> CultureBalance(type, value)
         }
     }
 

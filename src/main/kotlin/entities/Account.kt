@@ -10,13 +10,13 @@ class Account {
         Balance.create(BalanceTypes.GENERAL, 1000.0),
     )
 
-    fun debtTransaction(intent: TransactionIntent) {
+    fun debtTransaction(intent: TransactionIntent): Transaction {
         val selectedBalance = balances
             .firstOrNull { it.isMmcUsable(intent.mmc) && it.hasSufficientBalance(intent.price) }
             ?: throw InsufficientBalanceException()
 
         selectedBalance.pay(intent.price)
-        // Criar transação
-        // Retorna transação
+
+        return Transaction.intentToTransaction(intent, selectedBalance.type)
     }
 }
