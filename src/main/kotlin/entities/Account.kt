@@ -15,7 +15,7 @@ class Account {
             .firstOrNull { it.isMmcUsable(intent.mmc) && it.hasSufficientBalance(intent.price) }
             ?: throw InsufficientBalanceException()
 
-        // Debtar saldo
+        selectedBalance.pay(intent.price)
         // Criar transação
         // Retorna transação
     }
